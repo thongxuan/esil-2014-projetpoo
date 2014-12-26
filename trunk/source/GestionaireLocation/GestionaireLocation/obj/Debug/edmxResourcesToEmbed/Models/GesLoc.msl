@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GesLocModelStoreContainer" CdmEntityContainer="GesLoc1Entities">
+    <EntitySetMapping Name="Annonces">
+      <EntityTypeMapping TypeName="GesLocModel.Annonce">
+        <MappingFragment StoreEntitySet="Annonce">
+          <ScalarProperty Name="IDAnnonce" ColumnName="IDAnnonce" />
+          <ScalarProperty Name="IDBailleur" ColumnName="IDBailleur" />
+          <ScalarProperty Name="IDAppartement" ColumnName="IDAppartement" />
+          <ScalarProperty Name="DatePub" ColumnName="DatePub" />
+          <ScalarProperty Name="Prix" ColumnName="Prix" />
+          <ScalarProperty Name="Motif" ColumnName="Motif" />
+          <ScalarProperty Name="NbMaxCol" ColumnName="NbMaxCol" />
+          <ScalarProperty Name="Visibilite" ColumnName="Visibilite" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Appartements">
+      <EntityTypeMapping TypeName="GesLocModel.Appartement">
+        <MappingFragment StoreEntitySet="Appartement">
+          <ScalarProperty Name="IDAppartement" ColumnName="IDAppartement" />
+          <ScalarProperty Name="Superficie" ColumnName="Superficie" />
+          <ScalarProperty Name="NbPieces" ColumnName="NbPieces" />
+          <ScalarProperty Name="Parking" ColumnName="Parking" />
+          <ScalarProperty Name="NbEtage" ColumnName="NbEtage" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Lieu" ColumnName="Lieu" />
+          <ScalarProperty Name="InfoSupp" ColumnName="InfoSupp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bailleurs">
+      <EntityTypeMapping TypeName="GesLocModel.Bailleur">
+        <MappingFragment StoreEntitySet="Bailleur">
+          <ScalarProperty Name="IDBailleur" ColumnName="IDBailleur" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="Adresse" ColumnName="Adresse" />
+          <ScalarProperty Name="InfoSupp" ColumnName="InfoSupp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Demandes">
+      <EntityTypeMapping TypeName="GesLocModel.Demande">
+        <MappingFragment StoreEntitySet="Demande">
+          <ScalarProperty Name="IDLocataire" ColumnName="IDLocataire" />
+          <ScalarProperty Name="IDAnnonce" ColumnName="IDAnnonce" />
+          <ScalarProperty Name="DateDemande" ColumnName="DateDemande" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Commentaire" ColumnName="Commentaire" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Locataires">
+      <EntityTypeMapping TypeName="GesLocModel.Locataire">
+        <MappingFragment StoreEntitySet="Locataire">
+          <ScalarProperty Name="IDLocataire" ColumnName="IDLocataire" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="Addresse" ColumnName="Addresse" />
+          <ScalarProperty Name="Civilite" ColumnName="Civilite" />
+          <ScalarProperty Name="DateNaiss" ColumnName="DateNaiss" />
+          <ScalarProperty Name="Profession" ColumnName="Profession" />
+          <ScalarProperty Name="EtatCivil" ColumnName="EtatCivil" />
+          <ScalarProperty Name="Fumeur" ColumnName="Fumeur" />
+          <ScalarProperty Name="InfoSupp" ColumnName="InfoSupp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Utilisateurs">
+      <EntityTypeMapping TypeName="GesLocModel.Utilisateur">
+        <MappingFragment StoreEntitySet="Utilisateur">
+          <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="motdepasse" ColumnName="motdepasse" />
+          <ScalarProperty Name="seed" ColumnName="seed" />
+          <ScalarProperty Name="type" ColumnName="type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
