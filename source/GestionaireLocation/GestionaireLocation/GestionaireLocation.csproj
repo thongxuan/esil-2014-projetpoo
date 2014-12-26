@@ -44,6 +44,8 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -130,12 +132,49 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\GestionaireLocationController.cs" />
+    <Compile Include="Controllers\LoginSessionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Annonce.cs">
+      <DependentUpon>GesLoc.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Appartement.cs">
+      <DependentUpon>GesLoc.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Bailleur.cs">
+      <DependentUpon>GesLoc.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Demande.cs">
+      <DependentUpon>GesLoc.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GesLoc.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GesLoc.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GesLoc.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GesLoc.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GesLoc.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GesLoc.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Locataire.cs">
+      <DependentUpon>GesLoc.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Utilisateur.cs">
+      <DependentUpon>GesLoc.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Image\bailleur.png" />
+    <Content Include="Content\Image\locataire.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -192,6 +231,23 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <EntityDeploy Include="Models\GesLoc.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>GesLoc.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\GesLoc.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>GesLoc.edmx</DependentUpon>
+      <LastGenOutput>GesLoc.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\GesLoc.edmx.diagram">
+      <DependentUpon>GesLoc.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\GesLoc.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>GesLoc.edmx</DependentUpon>
+      <LastGenOutput>GesLoc.cs</LastGenOutput>
+    </Content>
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -208,6 +264,11 @@
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Views\GestionaireLocation\MainPage.aspx" />
+    <Content Include="Views\LoginSession\ins_choisir.aspx" />
+    <Content Include="Views\LoginSession\ins_bailleur.aspx" />
+    <Content Include="Views\LoginSession\ins_locataire.aspx" />
+    <Content Include="Views\LoginSession\Login.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -222,11 +283,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

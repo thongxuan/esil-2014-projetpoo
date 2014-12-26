@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="cd990ee70f794768b29dd2901b57207d" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="GesLocModel.Annonce" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GesLocModel.Appartement" Width="1.5" PointX="3" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GesLocModel.Bailleur" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GesLocModel.Demande" Width="1.5" PointX="7.5" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GesLocModel.Locataire" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GesLocModel.Utilisateur" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
+        <AssociationConnector Association="GesLocModel.FK_Annonce_Appartement" ManuallyRouted="false" />
+        <AssociationConnector Association="GesLocModel.FK_Annonce_Bailleur" ManuallyRouted="false" />
+        <AssociationConnector Association="GesLocModel.FK_Demande_Annonce" ManuallyRouted="false" />
+        <AssociationConnector Association="GesLocModel.FK_Bailleur_tbUtilisateur" ManuallyRouted="false" />
+        <AssociationConnector Association="GesLocModel.FK_Demande_Locataire" ManuallyRouted="false" />
+        <AssociationConnector Association="GesLocModel.FK_Locataire_tbUtilisateur" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

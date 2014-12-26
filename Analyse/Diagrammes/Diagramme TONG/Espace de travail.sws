@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?PowerDesigner signature="Workspace" version="15.1.0.2850"?>
+<!-- Veuillez ne pas modifier ce fichier -->
+
+<Workspace>
+	<Local Expanded="Yes">
+		<Model ID="{A8D283B4-F393-48F3-AC0D-61CC84B25E2F}" Loaded="No" Name="MCO projet" OpenedReadOnly="Yes" Type="{FF4B6538-9856-42CF-B9B9-304ED370CEAA}" URL="MCO projet.prj"/>
+		<Model ID="{A8D283B4-F393-48F3-AC0D-61CC84B25E2F}" Name="MCO projet" Type="{FF4B6538-9856-42CF-B9B9-304ED370CEAA}" URL="MCO projet.prj"/>
+	</Local>
+	<BrowserModule Name="Référentiel"/>
+</Workspace>
