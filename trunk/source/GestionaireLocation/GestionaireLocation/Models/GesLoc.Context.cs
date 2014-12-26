@@ -7,29 +7,26 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GestionaireLocation.Models
+using System;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+
+public partial class GesLoc1Entities : DbContext
 {
-    using System;
-    using System.Data.Entity;
-    using System.Data.Entity.Infrastructure;
-    
-    public partial class GesLoc1Entities : DbContext
+    public GesLoc1Entities()
+        : base("name=GesLoc1Entities")
     {
-        public GesLoc1Entities()
-            : base("name=GesLoc1Entities")
-        {
-        }
-    
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            throw new UnintentionalCodeFirstException();
-        }
-    
-        public DbSet<Annonce> Annonces { get; set; }
-        public DbSet<Appartement> Appartements { get; set; }
-        public DbSet<Bailleur> Bailleurs { get; set; }
-        public DbSet<Demande> Demandes { get; set; }
-        public DbSet<Locataire> Locataires { get; set; }
-        public DbSet<Utilisateur> Utilisateurs { get; set; }
     }
+
+    protected override void OnModelCreating(DbModelBuilder modelBuilder)
+    {
+        throw new UnintentionalCodeFirstException();
+    }
+
+    public DbSet<Annonce> Annonces { get; set; }
+    public DbSet<Appartement> Appartements { get; set; }
+    public DbSet<Bailleur> Bailleurs { get; set; }
+    public DbSet<Demande> Demandes { get; set; }
+    public DbSet<Locataire> Locataires { get; set; }
+    public DbSet<Utilisateur> Utilisateurs { get; set; }
 }
