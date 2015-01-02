@@ -1,0 +1,2 @@
+02-01-2015 8:45PM - Thong
+J'ai cree une vue "Site.Master" pour la page master. Tu peux desormais creer les vues en l'utilisant.
