@@ -19,6 +19,11 @@ namespace GestionaireLocation.Controllers
 
         public ActionResult login(FormCollection fc)
         {
+            return View("~/Views/GestionaireLocation/accueil_locataire.aspx");
+        }
+
+        public ActionResult logout()
+        {
             return null;
         }
 

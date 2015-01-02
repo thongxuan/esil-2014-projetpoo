@@ -175,6 +175,7 @@
   <ItemGroup>
     <Content Include="Content\Image\bailleur.png" />
     <Content Include="Content\Image\locataire.png" />
+    <Content Include="Content\Image\log_out.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -264,11 +265,11 @@
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Views\GestionaireLocation\MainPage.aspx" />
-    <Content Include="Views\LoginSession\ins_choisir.aspx" />
+    <Content Include="Views\GestionaireLocation\accueil_locataire.aspx" />
     <Content Include="Views\LoginSession\ins_bailleur.aspx" />
+    <Content Include="Views\LoginSession\ins_choisir.aspx" />
     <Content Include="Views\LoginSession\ins_locataire.aspx" />
-    <Content Include="Views\LoginSession\Login.aspx" />
+    <Content Include="Views\LoginSession\login.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -280,6 +281,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\Site.Master" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
