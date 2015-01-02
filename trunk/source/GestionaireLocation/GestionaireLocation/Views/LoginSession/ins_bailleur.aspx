@@ -1,15 +1,11 @@
-﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
 
-<!DOCTYPE html>
+<asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
+    ins_bailleur
+</asp:Content>
 
-<html>
-<head runat="server">
-    <meta name="viewport" content="width=device-width" />
-    <title>inscription_bailler</title>
-</head>
-<body>
-    <div>
-        PAGE D'INSCRIPTION POUR BAILLEUR
-    </div>
-</body>
-</html>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+
+<h2>ins_bailleur</h2>
+
+</asp:Content>

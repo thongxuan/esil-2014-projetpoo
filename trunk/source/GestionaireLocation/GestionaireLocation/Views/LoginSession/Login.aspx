@@ -1,13 +1,10 @@
-﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
 
-<!DOCTYPE html>
+<asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
+    login
+</asp:Content>
 
-<html>
-<head runat="server">
-    <meta name="viewport" content="width=device-width" />
-    <title>Gestionaire de Location</title>
-</head>
-<body>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div style="text-align:center; font-size:72px; color:skyblue; padding-top:120px; padding-bottom:30px">        
         Gestionaire de Location
     </div>    
@@ -50,5 +47,5 @@
             </table>
         </div>
     <% } %>
-</body>
-</html>
+
+</asp:Content>
