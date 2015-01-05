@@ -266,6 +266,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\GestionaireLocation\accueil_locataire.aspx" />
+    <Content Include="Views\GestionaireLocation\recherche.aspx" />
     <Content Include="Views\LoginSession\ins_bailleur.aspx" />
     <Content Include="Views\LoginSession\ins_choisir.aspx" />
     <Content Include="Views\LoginSession\ins_locataire.aspx" />
