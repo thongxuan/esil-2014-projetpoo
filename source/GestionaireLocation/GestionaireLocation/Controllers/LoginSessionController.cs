@@ -11,6 +11,7 @@ namespace GestionaireLocation.Controllers
     {
         //
         // GET: /LoginSession/
+        GesLoc1Entities bd = new GesLoc1Entities();
 
         public ActionResult Index()
         {            
@@ -19,12 +20,19 @@ namespace GestionaireLocation.Controllers
 
         public ActionResult login(FormCollection fc)
         {
+//<<<<<<< .mine
+            //String nom = fc.Get("txtLogin");
+           // Utilisateur u = bd.Utilisateurs.First(x => x.login.Equals(nom));
+
+            return View("recherche");
+//=======
             return View("~/Views/GestionaireLocation/accueil_locataire.aspx");
         }
 
         public ActionResult logout()
         {
             return null;
+//>>>>>>> .r12
         }
 
         public ActionResult inscription()
@@ -39,7 +47,7 @@ namespace GestionaireLocation.Controllers
 
         public ActionResult inscription_locataire()
         {
-            return View("ins_locataire");
+            return View("~/Views/GestionaireLocation/recherche.aspx");
         }
     }
 }
