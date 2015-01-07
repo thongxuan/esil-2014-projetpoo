@@ -29,6 +29,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <FilesToIncludeForPublish>OnlyFilesToRunTheApp</FilesToIncludeForPublish>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -265,8 +266,8 @@
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Views\GestionaireLocation\accueil_locataire.aspx" />
-    <Content Include="Views\GestionaireLocation\recherche.aspx" />
+    <Content Include="Views\GestionaireLocation\locataire_accueil.aspx" />
+    <Content Include="Views\GestionaireLocation\locataire_info.aspx" />
     <Content Include="Views\LoginSession\ins_bailleur.aspx" />
     <Content Include="Views\LoginSession\ins_choisir.aspx" />
     <Content Include="Views\LoginSession\ins_locataire.aspx" />
@@ -285,6 +286,7 @@
     <Content Include="Views\Shared\Site.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Code\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
