@@ -10,11 +10,17 @@ namespace GestionaireLocation.Controllers
     {
         //
         // GET: /GestionaireLocation/
-
+        
         public ActionResult Index()
         {
             return View();
         }
+
+        public ActionResult gotopage_locataire_info()
+        {
+            return View("locataire_info");
+        }
+
 
     }
 }

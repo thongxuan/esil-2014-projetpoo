@@ -20,19 +20,16 @@ namespace GestionaireLocation.Controllers
 
         public ActionResult login(FormCollection fc)
         {
-//<<<<<<< .mine
             //String nom = fc.Get("txtLogin");
            // Utilisateur u = bd.Utilisateurs.First(x => x.login.Equals(nom));
 
-            return View("recherche");
-//=======
+            //return View("recherche");
             return View("~/Views/GestionaireLocation/accueil_locataire.aspx");
         }
 
         public ActionResult logout()
         {
             return null;
-//>>>>>>> .r12
         }
 
         public ActionResult inscription()
