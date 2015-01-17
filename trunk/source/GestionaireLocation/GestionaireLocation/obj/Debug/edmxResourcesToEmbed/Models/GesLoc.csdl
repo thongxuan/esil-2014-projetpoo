@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GesLocModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityType Name="Annonce">
+    <Key>
+      <PropertyRef Name="IDAnnonce" />
+    </Key>
+    <Property Name="IDAnnonce" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDBailleur" Type="Int32" Nullable="false" />
+    <Property Name="IDAppartement" Type="Int32" Nullable="false" />
+    <Property Name="DatePub" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Prix" Type="Double" Nullable="false" />
+    <Property Name="Motif" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NbMaxCol" Type="Int32" Nullable="false" />
+    <Property Name="Visibilite" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Appartement" Relationship="Self.FK_Annonce_Appartement" FromRole="Annonce" ToRole="Appartement" />
+    <NavigationProperty Name="Bailleur" Relationship="Self.FK_Annonce_Bailleur" FromRole="Annonce" ToRole="Bailleur" />
+    <NavigationProperty Name="Demandes" Relationship="Self.FK_Demande_Annonce" FromRole="Annonce" ToRole="Demande" />
+  </EntityType>
+  <EntityType Name="Appartement">
+    <Key>
+      <PropertyRef Name="IDAppartement" />
+    </Key>
+    <Property Name="IDAppartement" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Superficie" Type="Double" Nullable="false" />
+    <Property Name="NbPieces" Type="Int32" Nullable="false" />
+    <Property Name="Parking" Type="Int32" Nullable="false" />
+    <Property Name="NbEtage" Type="Int32" Nullable="false" />
+    <Property Name="Type" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Lieu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="InfoSupp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Annonces" Relationship="Self.FK_Annonce_Appartement" FromRole="Appartement" ToRole="Annonce" />
+  </EntityType>
+  <EntityType Name="Bailleur">
+    <Key>
+      <PropertyRef Name="IDBailleur" />
+    </Key>
+    <Property Name="IDBailleur" Type="Int32" Nullable="false" />
+    <Property Name="Telephone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Adresse" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="InfoSupp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Annonces" Relationship="Self.FK_Annonce_Bailleur" FromRole="Bailleur" ToRole="Annonce" />
+    <NavigationProperty Name="Utilisateur" Relationship="Self.FK_Bailleur_tbUtilisateur" FromRole="Bailleur" ToRole="Utilisateur" />
+  </EntityType>
+  <EntityType Name="Demande">
+    <Key>
+      <PropertyRef Name="IDLocataire" />
+      <PropertyRef Name="IDAnnonce" />
+    </Key>
+    <Property Name="IDLocataire" Type="Int32" Nullable="false" />
+    <Property Name="IDAnnonce" Type="Int32" Nullable="false" />
+    <Property Name="DateDemande" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="Commentaire" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Annonce" Relationship="Self.FK_Demande_Annonce" FromRole="Demande" ToRole="Annonce" />
+    <NavigationProperty Name="Locataire" Relationship="Self.FK_Demande_Locataire" FromRole="Demande" ToRole="Locataire" />
+  </EntityType>
+  <EntityType Name="Locataire">
+    <Key>
+      <PropertyRef Name="IDLocataire" />
+    </Key>
+    <Property Name="IDLocataire" Type="Int32" Nullable="false" />
+    <Property Name="Telephone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Addresse" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Civilite" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DateNaiss" Type="DateTime" Precision="0" />
+    <Property Name="Profession" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EtatCivil" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Fumeur" Type="Int32" />
+    <Property Name="InfoSupp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Demandes" Relationship="Self.FK_Demande_Locataire" FromRole="Locataire" ToRole="Demande" />
+    <NavigationProperty Name="Utilisateur" Relationship="Self.FK_Locataire_tbUtilisateur" FromRole="Locataire" ToRole="Utilisateur" />
+  </EntityType>
+  <EntityType Name="Utilisateur">
+    <Key>
+      <PropertyRef Name="IDUser" />
+    </Key>
+    <Property Name="IDUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="motdepasse" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="seed" Type="Int32" Nullable="false" />
+    <Property Name="type" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Bailleur" Relationship="Self.FK_Bailleur_tbUtilisateur" FromRole="Utilisateur" ToRole="Bailleur" />
+    <NavigationProperty Name="Locataire" Relationship="Self.FK_Locataire_tbUtilisateur" FromRole="Utilisateur" ToRole="Locataire" />
+  </EntityType>
+  <Association Name="FK_Annonce_Appartement">
+    <End Role="Appartement" Type="Self.Appartement" Multiplicity="1" />
+    <End Role="Annonce" Type="Self.Annonce" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Appartement">
+        <PropertyRef Name="IDAppartement" />
+      </Principal>
+      <Dependent Role="Annonce">
+        <PropertyRef Name="IDAppartement" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Annonce_Bailleur">
+    <End Role="Bailleur" Type="Self.Bailleur" Multiplicity="1" />
+    <End Role="Annonce" Type="Self.Annonce" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bailleur">
+        <PropertyRef Name="IDBailleur" />
+      </Principal>
+      <Dependent Role="Annonce">
+        <PropertyRef Name="IDBailleur" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Demande_Annonce">
+    <End Role="Annonce" Type="Self.Annonce" Multiplicity="1" />
+    <End Role="Demande" Type="Self.Demande" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Annonce">
+        <PropertyRef Name="IDAnnonce" />
+      </Principal>
+      <Dependent Role="Demande">
+        <PropertyRef Name="IDAnnonce" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Bailleur_tbUtilisateur">
+    <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="1" />
+    <End Role="Bailleur" Type="Self.Bailleur" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Utilisateur">
+        <PropertyRef Name="IDUser" />
+      </Principal>
+      <Dependent Role="Bailleur">
+        <PropertyRef Name="IDBailleur" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Demande_Locataire">
+    <End Role="Locataire" Type="Self.Locataire" Multiplicity="1" />
+    <End Role="Demande" Type="Self.Demande" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Locataire">
+        <PropertyRef Name="IDLocataire" />
+      </Principal>
+      <Dependent Role="Demande">
+        <PropertyRef Name="IDLocataire" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Locataire_tbUtilisateur">
+    <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="1" />
+    <End Role="Locataire" Type="Self.Locataire" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Utilisateur">
+        <PropertyRef Name="IDUser" />
+      </Principal>
+      <Dependent Role="Locataire">
+        <PropertyRef Name="IDLocataire" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="GesLoc1Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Annonces" EntityType="Self.Annonce" />
+    <EntitySet Name="Appartements" EntityType="Self.Appartement" />
+    <EntitySet Name="Bailleurs" EntityType="Self.Bailleur" />
+    <EntitySet Name="Demandes" EntityType="Self.Demande" />
+    <EntitySet Name="Locataires" EntityType="Self.Locataire" />
+    <EntitySet Name="Utilisateurs" EntityType="Self.Utilisateur" />
+    <AssociationSet Name="FK_Annonce_Appartement" Association="Self.FK_Annonce_Appartement">
+      <End Role="Appartement" EntitySet="Appartements" />
+      <End Role="Annonce" EntitySet="Annonces" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Annonce_Bailleur" Association="Self.FK_Annonce_Bailleur">
+      <End Role="Bailleur" EntitySet="Bailleurs" />
+      <End Role="Annonce" EntitySet="Annonces" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Demande_Annonce" Association="Self.FK_Demande_Annonce">
+      <End Role="Annonce" EntitySet="Annonces" />
+      <End Role="Demande" EntitySet="Demandes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Bailleur_tbUtilisateur" Association="Self.FK_Bailleur_tbUtilisateur">
+      <End Role="Utilisateur" EntitySet="Utilisateurs" />
+      <End Role="Bailleur" EntitySet="Bailleurs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Demande_Locataire" Association="Self.FK_Demande_Locataire">
+      <End Role="Locataire" EntitySet="Locataires" />
+      <End Role="Demande" EntitySet="Demandes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Locataire_tbUtilisateur" Association="Self.FK_Locataire_tbUtilisateur">
+      <End Role="Utilisateur" EntitySet="Utilisateurs" />
+      <End Role="Locataire" EntitySet="Locataires" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
