@@ -27,3 +27,4 @@ E:\HOC KI 7 FRANCE\MCO\esil-2014-projetpoo\source\GestionaireLocation\Gestionair
 E:\HOC KI 7 FRANCE\MCO\esil-2014-projetpoo\source\GestionaireLocation\GestionaireLocation\bin\System.Web.WebPages.Razor.xml
 E:\HOC KI 7 FRANCE\MCO\esil-2014-projetpoo\source\GestionaireLocation\GestionaireLocation\obj\Release\GestionaireLocation.dll
 E:\HOC KI 7 FRANCE\MCO\esil-2014-projetpoo\source\GestionaireLocation\GestionaireLocation\obj\Release\GestionaireLocation.pdb
+E:\HOC KI 7 FRANCE\MCO\esil-2014-projetpoo\source\GestionaireLocation\GestionaireLocation\obj\Release\GestionaireLocation.csprojResolveAssemblyReference.cache

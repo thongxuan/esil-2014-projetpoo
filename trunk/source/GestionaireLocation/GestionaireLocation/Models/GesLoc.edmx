@@ -340,7 +340,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="GesLoc1Entities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="GesLocEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Annonces" EntityType="Self.Annonce" />
           <EntitySet Name="Appartements" EntityType="Self.Appartement" />
           <EntitySet Name="Bailleurs" EntityType="Self.Bailleur" />
@@ -377,7 +377,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="GesLocModelStoreContainer" CdmEntityContainer="GesLoc1Entities">
+        <EntityContainerMapping StorageEntityContainer="GesLocModelStoreContainer" CdmEntityContainer="GesLocEntities">
           <EntitySetMapping Name="Annonces">
             <EntityTypeMapping TypeName="GesLocModel.Annonce">
               <MappingFragment StoreEntitySet="Annonce">

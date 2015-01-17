@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="cd990ee70f794768b29dd2901b57207d" Name="Diagram1" ZoomLevel="74">
+      <Diagram DiagramId="b7b5229a893c4afa9967a05e5e14d741" Name="Diagram1">
         <EntityTypeShape EntityType="GesLocModel.Annonce" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="GesLocModel.Appartement" Width="1.5" PointX="3" PointY="9.375" IsExpanded="true" />
         <EntityTypeShape EntityType="GesLocModel.Bailleur" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />

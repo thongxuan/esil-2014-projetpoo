@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GestionaireLocation.Class;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -23,6 +25,6 @@ namespace GestionaireLocation
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-        }        
+        }
     }
 }

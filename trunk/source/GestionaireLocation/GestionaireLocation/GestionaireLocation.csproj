@@ -129,10 +129,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\CustomMembershipProvider.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Class\CustomRoleProvider.cs" />
     <Compile Include="Controllers\GestionaireLocationController.cs" />
     <Compile Include="Controllers\LoginSessionController.cs" />
     <Compile Include="Global.asax.cs">
@@ -268,8 +270,11 @@
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Views\GestionaireLocation\bailleur_accueil.aspx" />
     <Content Include="Views\GestionaireLocation\locataire_accueil.aspx" />
     <Content Include="Views\GestionaireLocation\locataire_info.aspx" />
+    <Content Include="Views\GestionaireLocation\locataire_recherche.aspx" />
+    <Content Include="Views\LoginSession\access_denied.aspx" />
     <Content Include="Views\LoginSession\ins_bailleur.aspx" />
     <Content Include="Views\LoginSession\ins_choisir.aspx" />
     <Content Include="Views\LoginSession\ins_locataire.aspx" />
@@ -288,10 +293,7 @@
     <Content Include="Views\Shared\Locataire.Master" />
     <Content Include="Views\Shared\Bailleur.Master" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Code\" />
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>

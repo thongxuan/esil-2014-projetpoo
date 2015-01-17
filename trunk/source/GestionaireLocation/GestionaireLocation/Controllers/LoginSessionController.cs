@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using GestionaireLocation.Models;
+using GestionaireLocation.Class;
+using Newtonsoft.Json;
+using System.Web.Security;
 
 namespace GestionaireLocation.Controllers
 {
@@ -11,25 +14,46 @@ namespace GestionaireLocation.Controllers
     {
         //
         // GET: /LoginSession/
-        GesLoc1Entities bd = new GesLoc1Entities();
+        GesLocEntities bd = new GesLocEntities();
 
         public ActionResult Index()
         {            
             return View("login");
         }
 
+        
         public ActionResult login(FormCollection fc)
         {
-            //String nom = fc.Get("txtLogin");
-           // Utilisateur u = bd.Utilisateurs.First(x => x.login.Equals(nom));
-
-            //return View("recherche");
-            return View("~/Views/GestionaireLocation/accueil_locataire.aspx");
-        }
+            String login = fc["txtLogin"];
+            String motdepasse = fc["txtMotdepasse"];
+            if (login==null || motdepasse==null)
+            {
+                return View("login");
+            }
+            else if (login.Equals(String.Empty) || motdepasse.Equals(String.Empty))
+            {
+                ViewData["error"] = "Login et mot de passe sont requis";
+                return View("login");
+            }
+            else
+            {
+                if (Membership.ValidateUser(login, motdepasse))
+                {
+                    FormsAuthentication.RedirectFromLoginPage(login, false);
+                    return RedirectToAction("index_locataire", "GestionaireLocation", null);
+                }
+                else
+                {
+                    ViewData["error"] = "Authentification échouée: login et/ou mot de passe incorrect";
+                    return View("login");
+                }
+            }
+        }       
 
         public ActionResult logout()
         {
-            return null;
+            FormsAuthentication.SignOut();
+            return RedirectToAction("login", "LoginSession", null);
         }
 
         public ActionResult inscription()
@@ -45,6 +69,11 @@ namespace GestionaireLocation.Controllers
         public ActionResult inscription_locataire()
         {
             return View("~/Views/GestionaireLocation/recherche.aspx");
+        }
+
+        public ActionResult access_denied()
+        {
+            return View("access_denied");
         }
     }
 }

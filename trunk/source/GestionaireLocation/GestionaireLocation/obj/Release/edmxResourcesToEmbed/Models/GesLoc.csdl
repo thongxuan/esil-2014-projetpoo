@@ -155,7 +155,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="GesLoc1Entities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="GesLocEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Annonces" EntityType="Self.Annonce" />
     <EntitySet Name="Appartements" EntityType="Self.Appartement" />
     <EntitySet Name="Bailleurs" EntityType="Self.Bailleur" />
