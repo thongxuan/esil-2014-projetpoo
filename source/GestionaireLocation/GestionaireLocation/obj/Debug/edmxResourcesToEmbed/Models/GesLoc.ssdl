@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GesLocModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityType Name="Annonce">
+    <Key>
+      <PropertyRef Name="IDAnnonce" />
+    </Key>
+    <Property Name="IDAnnonce" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDBailleur" Type="int" Nullable="false" />
+    <Property Name="IDAppartement" Type="int" Nullable="false" />
+    <Property Name="DatePub" Type="date" Nullable="false" />
+    <Property Name="Prix" Type="float" Nullable="false" />
+    <Property Name="Motif" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="NbMaxCol" Type="int" Nullable="false" />
+    <Property Name="Visibilite" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Appartement">
+    <Key>
+      <PropertyRef Name="IDAppartement" />
+    </Key>
+    <Property Name="IDAppartement" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Superficie" Type="float" Nullable="false" />
+    <Property Name="NbPieces" Type="int" Nullable="false" />
+    <Property Name="Parking" Type="int" Nullable="false" />
+    <Property Name="NbEtage" Type="int" Nullable="false" />
+    <Property Name="Type" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Lieu" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="InfoSupp" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Bailleur">
+    <Key>
+      <PropertyRef Name="IDBailleur" />
+    </Key>
+    <Property Name="IDBailleur" Type="int" Nullable="false" />
+    <Property Name="Telephone" Type="nvarchar" MaxLength="20" />
+    <Property Name="Adresse" Type="nvarchar" MaxLength="200" />
+    <Property Name="InfoSupp" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Demande">
+    <Key>
+      <PropertyRef Name="IDLocataire" />
+      <PropertyRef Name="IDAnnonce" />
+    </Key>
+    <Property Name="IDLocataire" Type="int" Nullable="false" />
+    <Property Name="IDAnnonce" Type="int" Nullable="false" />
+    <Property Name="DateDemande" Type="date" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="Commentaire" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Locataire">
+    <Key>
+      <PropertyRef Name="IDLocataire" />
+    </Key>
+    <Property Name="IDLocataire" Type="int" Nullable="false" />
+    <Property Name="Telephone" Type="nvarchar" MaxLength="20" />
+    <Property Name="Addresse" Type="nvarchar" MaxLength="200" />
+    <Property Name="Civilite" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="DateNaiss" Type="date" />
+    <Property Name="Profession" Type="nvarchar" MaxLength="50" />
+    <Property Name="EtatCivil" Type="nchar" MaxLength="10" />
+    <Property Name="Fumeur" Type="int" />
+    <Property Name="InfoSupp" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Utilisateur">
+    <Key>
+      <PropertyRef Name="IDUser" />
+    </Key>
+    <Property Name="IDUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nom" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="login" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="motdepasse" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="seed" Type="int" Nullable="false" />
+    <Property Name="type" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Annonce_Appartement">
+    <End Role="Appartement" Type="Self.Appartement" Multiplicity="1" />
+    <End Role="Annonce" Type="Self.Annonce" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Appartement">
+        <PropertyRef Name="IDAppartement" />
+      </Principal>
+      <Dependent Role="Annonce">
+        <PropertyRef Name="IDAppartement" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Annonce_Bailleur">
+    <End Role="Bailleur" Type="Self.Bailleur" Multiplicity="1" />
+    <End Role="Annonce" Type="Self.Annonce" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bailleur">
+        <PropertyRef Name="IDBailleur" />
+      </Principal>
+      <Dependent Role="Annonce">
+        <PropertyRef Name="IDBailleur" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Bailleur_tbUtilisateur">
+    <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="1" />
+    <End Role="Bailleur" Type="Self.Bailleur" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Utilisateur">
+        <PropertyRef Name="IDUser" />
+      </Principal>
+      <Dependent Role="Bailleur">
+        <PropertyRef Name="IDBailleur" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Demande_Annonce">
+    <End Role="Annonce" Type="Self.Annonce" Multiplicity="1" />
+    <End Role="Demande" Type="Self.Demande" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Annonce">
+        <PropertyRef Name="IDAnnonce" />
+      </Principal>
+      <Dependent Role="Demande">
+        <PropertyRef Name="IDAnnonce" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Demande_Locataire">
+    <End Role="Locataire" Type="Self.Locataire" Multiplicity="1" />
+    <End Role="Demande" Type="Self.Demande" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Locataire">
+        <PropertyRef Name="IDLocataire" />
+      </Principal>
+      <Dependent Role="Demande">
+        <PropertyRef Name="IDLocataire" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Locataire_tbUtilisateur">
+    <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="1" />
+    <End Role="Locataire" Type="Self.Locataire" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Utilisateur">
+        <PropertyRef Name="IDUser" />
+      </Principal>
+      <Dependent Role="Locataire">
+        <PropertyRef Name="IDLocataire" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="GesLocModelStoreContainer">
+    <EntitySet Name="Annonce" EntityType="Self.Annonce" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Appartement" EntityType="Self.Appartement" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Bailleur" EntityType="Self.Bailleur" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Demande" EntityType="Self.Demande" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Locataire" EntityType="Self.Locataire" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Utilisateur" EntityType="Self.Utilisateur" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Annonce_Appartement" Association="Self.FK_Annonce_Appartement">
+      <End Role="Appartement" EntitySet="Appartement" />
+      <End Role="Annonce" EntitySet="Annonce" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Annonce_Bailleur" Association="Self.FK_Annonce_Bailleur">
+      <End Role="Bailleur" EntitySet="Bailleur" />
+      <End Role="Annonce" EntitySet="Annonce" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Bailleur_tbUtilisateur" Association="Self.FK_Bailleur_tbUtilisateur">
+      <End Role="Utilisateur" EntitySet="Utilisateur" />
+      <End Role="Bailleur" EntitySet="Bailleur" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Demande_Annonce" Association="Self.FK_Demande_Annonce">
+      <End Role="Annonce" EntitySet="Annonce" />
+      <End Role="Demande" EntitySet="Demande" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Demande_Locataire" Association="Self.FK_Demande_Locataire">
+      <End Role="Locataire" EntitySet="Locataire" />
+      <End Role="Demande" EntitySet="Demande" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Locataire_tbUtilisateur" Association="Self.FK_Locataire_tbUtilisateur">
+      <End Role="Utilisateur" EntitySet="Utilisateur" />
+      <End Role="Locataire" EntitySet="Locataire" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
