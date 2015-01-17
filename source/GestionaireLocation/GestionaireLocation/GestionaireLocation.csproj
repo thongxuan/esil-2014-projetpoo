@@ -279,6 +279,7 @@
     <Content Include="Views\LoginSession\ins_choisir.aspx" />
     <Content Include="Views\LoginSession\ins_locataire.aspx" />
     <Content Include="Views\LoginSession\login.aspx" />
+    <Content Include="Views\Shared\Priorite.ascx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -292,6 +293,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\Locataire.Master" />
     <Content Include="Views\Shared\Bailleur.Master" />
+    <Content Include="Views\Shared\Site.Master" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

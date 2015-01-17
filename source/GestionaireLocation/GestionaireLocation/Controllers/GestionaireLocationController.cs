@@ -25,5 +25,10 @@ namespace GestionaireLocation.Controllers
         {
             return View("locataire_info");
         }
+
+        public ActionResult locataire_recherche()
+        {
+            return null;
+        }
     }
 }
