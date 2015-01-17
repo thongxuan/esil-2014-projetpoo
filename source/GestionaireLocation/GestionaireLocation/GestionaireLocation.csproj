@@ -175,6 +175,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Image\bailleur.png" />
+    <Content Include="Content\Image\entete.png" />
+    <Content Include="Content\Image\footer.png" />
     <Content Include="Content\Image\locataire.png" />
     <Content Include="Content\Image\log_out.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />

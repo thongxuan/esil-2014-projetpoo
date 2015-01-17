@@ -6,10 +6,88 @@
 <head runat="server">
     <meta name="viewport" content="width=device-width" />
     <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>
+    <style type="text/css">
+        .auto-style1 {
+            width: 70%;
+        }
+        .auto-style2 {
+            height: 23px;
+        }
+        .auto-style3 {
+            height: 23px;
+            width: 664px;
+        }
+        .auto-style4 {
+            width: 30%;
+        }
+        .auto-style5 {
+            width: 90px;
+        }
+         #arrondi{
+           border-radius:5px;
+        }
+        </style>
 </head>
 <body>
-    <div style="padding:100px">
+    <div style="padding-top:50px; padding-left:100px; padding-right:100px">
         <asp:ContentPlaceHolder ID="MainContent" runat="server">        
+            <table style="width:100%; margin:auto">
+                <tr>
+                    <td colspan="3" class="auto-style2">
+                        <img src='<%: Url.Content("~/Content/Image/entete.png") %>' style="width: 1107px; height:130px; margin-left: 0px"/> </td>
+                </tr>
+                <tr>
+                    <td class="auto-style5">
+                       Bienvenue, </td>
+                    <td style="text-align:right;"><a href='<%: Url.Action("logout", "LoginSession") %>'>
+                        <img src='<%: Url.Content("~/Content/Image/log_out.png") %>'/> Déconnexion </a></td>
+                </tr>
+            </table>
+            <table style="width:90%; margin:auto; padding-top:50px;">
+                <tr>
+                    <td class="auto-style4">
+                        <table>
+                            <tr>
+                                <td><a href='<%: Url.Action("gotopage_locataire_recherche", "GestionaireLocation") %>'>
+                                    <img src='<%: Url.Content("~/Content/Image/bouton_recherche.png") %>' width="250px"/> </a></td>
+                            </tr>
+                            <tr>
+                                <td><a href='<%: Url.Action("gotopage_locataire_demande", "GestionaireLocation") %>'>
+                                    <img src='<%: Url.Content("~/Content/Image/bouton_demande.png") %>' width="250px"/> </a></td>
+                            </tr>
+                            <tr>
+                                <td><a href='<%: Url.Action("gotopage_locataireinfo", "GestionaireLocation") %>'>
+                                    <img src='<%: Url.Content("~/Content/Image/bouton_info.png") %>' width="250px"/> </a></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td style="vertical-align:top" class="auto-style1 "  >
+                        <table style="width:100%; height:100%; border:dashed; border-width:1px">
+                            <tr>
+                                <td>
+                                    <asp:ContentPlaceHolder ID="titreMenu" runat="server">
+                                    </asp:ContentPlaceHolder>
+                                </td>
+                            </tr>
+                        </table>
+                        <table style="width:100%; height:100%; border:dashed; border-width:1px">
+                            <tr>
+                                <td>
+                                    <asp:ContentPlaceHolder ID="Bailleur" runat="server">
+                                    </asp:ContentPlaceHolder>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+            <!-- pied de page -->
+            <table id="arrondi">
+                <tr>
+                    <td colspan="3" class="auto-style3">
+                        <img src='<%: Url.Content("~/Content/Image/footer.png") %>' style="width: 1107px; height:50px; margin-left: 0px;margin-top:15px"/> </td>
+                </tr>
+            </table>
         </asp:ContentPlaceHolder>
     </div>
 </body>
