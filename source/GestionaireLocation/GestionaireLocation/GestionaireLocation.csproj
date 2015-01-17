@@ -285,7 +285,8 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Shared\Site.Master" />
+    <Content Include="Views\Shared\Locataire.Master" />
+    <Content Include="Views\Shared\Bailleur.Master" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
