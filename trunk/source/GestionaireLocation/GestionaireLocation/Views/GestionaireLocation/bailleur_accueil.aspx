@@ -1,15 +1,17 @@
-﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Bailleur.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
 
-<!DOCTYPE html>
+<asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
+    bailleur_accueil
+</asp:Content>
 
-<html>
-<head runat="server">
-    <meta name="viewport" content="width=device-width" />
-    <title></title>
-</head>
-<body>
-    <div>
-    HULO!
-    </div>
-</body>
-</html>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+
+<h2>bailleur_accueil</h2>
+
+</asp:Content>
+
+<asp:Content ID="Content3" ContentPlaceHolderID="titreMenu" runat="server">
+</asp:Content>
+
+<asp:Content ID="Content4" ContentPlaceHolderID="Bailleur" runat="server">
+</asp:Content>
