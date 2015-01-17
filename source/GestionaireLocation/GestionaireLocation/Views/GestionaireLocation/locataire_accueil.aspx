@@ -13,7 +13,7 @@
             <td style="text-align:right;">                
                 <a href='<%: Url.Action("logout", "LoginSession") %>'>                    
                     <img src='<%: Url.Content("~/Content/Image/log_out.png") %>'/>
-                    Déconnexion ong noi !!!!!!!!!!!!
+                    Déconnexion
                 </a>
             </td>
         </tr>
@@ -38,7 +38,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <a href='<%: Url.Action("gotopage_locataire_info", "GesionaireLocation") %>'>                    
+                            <a href='<%: Url.Action("gotopage_locataire_info", "GestionaireLocation") %>'>                    
                                 <img src='<%: Url.Content("~/Content/Image/bouton_info.png") %>' width="250px"/>                    
                             </a>
                         </td>

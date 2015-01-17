@@ -16,7 +16,7 @@
                         Nom d'utilisateur
                     </td>
                     <td>
-                        <%= Html.TextBox("txtLogin") %>
+                        <input type="text" name="txtLogin" style="width:100%" />
                     </td>
                 </tr>
                 <tr>
@@ -24,7 +24,18 @@
                         Mot de passe 
                     </td>
                     <td>
-                        <%= Html.Password("txtMdp") %>
+                        <input type="password" name="txtMotdepasse" style="width:100%" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <% if (ViewData["error"]!=null)
+                           {
+                        %>
+                            <%= ViewData["error"]%>
+                        <%
+                           }
+                        %>
                     </td>
                 </tr>
                 <tr>
