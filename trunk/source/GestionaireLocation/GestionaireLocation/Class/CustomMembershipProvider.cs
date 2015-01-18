@@ -3,12 +3,23 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Caching;
 using System.Web.Security;
 
 namespace GestionaireLocation.Class
 {
     public class CustomMembershipProvider : MembershipProvider
     {
+        int _cacheTimeoutInMinutes = 30;
+        public override void Initialize(string name, System.Collections.Specialized.NameValueCollection config)
+        {
+            int val;
+            if (!String.IsNullOrEmpty(config["cacheTimeoutInMinutes"]) && Int32.TryParse(config["cacheTimeoutInMinutes"], out val))
+            {
+                _cacheTimeoutInMinutes = val;
+            }
+            base.Initialize(name, config);
+        }
 
         public override bool ValidateUser(string username, string password)
         {
@@ -16,6 +27,30 @@ namespace GestionaireLocation.Class
             //validate user
             Utilisateur u = db.Utilisateurs.SingleOrDefault(x => x.login.Equals(username) && x.motdepasse.Equals(password));
             return (u != null);
+        }
+
+        public override MembershipUser GetUser(string username, bool userIsOnline)
+        {
+            var cacheKey = String.Format("UserData_{0}", username);
+            if (HttpRuntime.Cache[cacheKey]!=null)
+            {
+                return (CustomMembershipUser)HttpRuntime.Cache[cacheKey];
+            }
+            else
+            {
+                GesLocEntities db = new GesLocEntities();
+                Utilisateur u = db.Utilisateurs.FirstOrDefault(x => x.login.Equals(username));
+                if (u == null)
+                    return null;
+                else
+                {
+                    var membershipUser = new CustomMembershipUser(u);
+                    //store in cache
+                    HttpRuntime.Cache.Insert(cacheKey, membershipUser, null, DateTime.Now.AddMinutes(_cacheTimeoutInMinutes), Cache.NoSlidingExpiration);
+
+                    return membershipUser;
+                }
+            }
         }
 
         public override string ApplicationName
@@ -85,10 +120,7 @@ namespace GestionaireLocation.Class
             throw new NotImplementedException();
         }
 
-        public override MembershipUser GetUser(string username, bool userIsOnline)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public override MembershipUser GetUser(object providerUserKey, bool userIsOnline)
         {

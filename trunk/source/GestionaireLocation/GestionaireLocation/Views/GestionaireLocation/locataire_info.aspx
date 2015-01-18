@@ -1,28 +1,35 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Locataire.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    locataire_info
+<asp:Content ID="Content1" ContentPlaceHolderID="menuTitle" runat="server">
+    <p style="text-align:center">
+        <span style="font-size: x-large">
+            <strong>
+                Vos informations personnelles
+            </strong>
+        </span>
+    </p>
 </asp:Content>
 
-<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <table style="margin:auto; width:60%">
+<asp:Content ID="Content2" ContentPlaceHolderID="menuContent" runat="server">
+    <% GestionaireLocation.Models.Utilisateur user = (HttpContext.Current.User.Identity as GestionaireLocation.Class.CustomIdentity).MembershipUser.User;%>
+    <table style="margin:auto; width:100%;" border="1" cellpadding="5">
         <tr>
             <td rowspan="8">
-                <img src="" width="300px" height="300px"/>
+                <img src="" width="200px" height="200px"/>
             </td>
             <td>
                 Nom 
             </td>
             <td>
-                DANG Xuan Thong
+                <%= user.nom %>
             </td>
         </tr>
         <tr>
             <td>
-                Civilite 
+                Civilité 
             </td>
             <td>
-                Masculin
+                <%= user.Locataire.Civilite %>
             </td>
         </tr>
         <tr>
@@ -30,7 +37,7 @@
                 Date de naissance
             </td>
             <td>
-                05/12/1992
+                 <%= user.Locataire.DateNaiss %>
             </td>
         </tr>
         <tr>
@@ -38,15 +45,15 @@
                 Profession 
             </td>
             <td>
-                Etudiant
+                <%= user.Locataire.Profession %>
             </td>
         </tr>
         <tr>
             <td>
-                Telephone 
+                Téléphone 
             </td>
             <td>
-                07 82 57 69 89
+                 <%= user.Locataire.Telephone %>
             </td>
         </tr>
                 <tr>
@@ -54,7 +61,7 @@
                 Adresse
             </td>
             <td>
-                171 avenue de Luminy
+                 <%= user.Locataire.Addresse %>
             </td>
         </tr>
         <tr>
@@ -62,7 +69,7 @@
                 Etat civil
             </td>
             <td>
-                Celibataire
+                 <%= user.Locataire.EtatCivil %>
             </td>
         </tr>
         <tr>
@@ -75,12 +82,12 @@
         </tr>
         <tr>
             <td colspan="3">
-                Info suplementaires
+                Info suplémentaires
             </td>
         </tr>
         <tr>
             <td colspan="3"> 
-                Tres bel homme :v
+                 <%= user.Locataire.InfoSupp %>
             </td>
         </tr>
     </table>

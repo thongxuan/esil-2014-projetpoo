@@ -129,11 +129,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\comparable\AnnonceWrapper.cs" />
+    <Compile Include="Class\comparable\BatimentTypeCritere.cs" />
+    <Compile Include="Class\comparable\ComparatorCritere.cs" />
+    <Compile Include="Class\comparable\ModeLocationCritere.cs" />
+    <Compile Include="Class\comparable\PrixCritere.cs" />
+    <Compile Include="Class\comparable\SuperficieCritere.cs" />
+    <Compile Include="Class\CustomIdentity.cs" />
     <Compile Include="Class\CustomMembershipProvider.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Class\CustomMembershipUser.cs" />
+    <Compile Include="Class\CustomPrincipal.cs" />
     <Compile Include="Class\CustomRoleProvider.cs" />
     <Compile Include="Controllers\GestionaireLocationController.cs" />
     <Compile Include="Controllers\LoginSessionController.cs" />
@@ -177,6 +186,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Image\bailleur.png" />
+    <Content Include="Content\Image\bouton_annonce.png" />
+    <Content Include="Content\Image\bouton_appartement.png" />
+    <Content Include="Content\Image\bouton_publier.png" />
     <Content Include="Content\Image\entete.png" />
     <Content Include="Content\Image\footer.png" />
     <Content Include="Content\Image\locataire.png" />
@@ -274,6 +286,7 @@
     <Content Include="Views\GestionaireLocation\locataire_accueil.aspx" />
     <Content Include="Views\GestionaireLocation\locataire_info.aspx" />
     <Content Include="Views\GestionaireLocation\locataire_recherche.aspx" />
+    <Content Include="Views\GestionaireLocation\locataire_recherche_result.aspx" />
     <Content Include="Views\LoginSession\access_denied.aspx" />
     <Content Include="Views\LoginSession\ins_bailleur.aspx" />
     <Content Include="Views\LoginSession\ins_choisir.aspx" />
@@ -294,6 +307,7 @@
     <Content Include="Views\Shared\Locataire.Master" />
     <Content Include="Views\Shared\Bailleur.Master" />
     <Content Include="Views\Shared\Site.Master" />
+    <Content Include="Views\Shared\LoggedIn.Master" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
