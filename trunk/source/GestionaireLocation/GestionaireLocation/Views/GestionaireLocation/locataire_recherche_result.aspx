@@ -10,8 +10,9 @@
         </span>
     </p>
 </asp:Content>
-<asp:Content ContentPlaceHolderID="menuContent" runat="server">
+<asp:Content ContentPlaceHolderID="menuContent" runat="server">    
     <% GestionaireLocation.Class.AnnonceWrapper[] list = (GestionaireLocation.Class.AnnonceWrapper[])ViewData["result_list"];
+       int abc = 10;
        if (list.Length>0)
        {
             for (int i=0; i<list.Length;i++)
@@ -56,7 +57,7 @@
                             <%= Html.ActionLink("Plus d'info de cet appartement", "locataire_plusinfo_annonce", "GestionaireLocation")%>
                         </td>
                         <td colspan="2">
-                            Propose par <%= Html.ActionLink(list[i].annonce.Bailleur.Utilisateur.nom, "locataire_plusinfo_annonce", "GestionaireLocation")%>
+                            Proposé par <%= Html.ActionLink(list[i].annonce.Bailleur.Utilisateur.nom, "locataire_plusinfo_bailleur", "GestionaireLocation")%>
                         </td>
                     </tr>
                 </table>
@@ -67,7 +68,8 @@
         }
         else
         {
-           %><div style="text-align:center">Aucun résultat trouvé</div><%
+           %>            
+            <div style="text-align:center">Aucun résultat trouvé</div><%
         }  
     %>
 

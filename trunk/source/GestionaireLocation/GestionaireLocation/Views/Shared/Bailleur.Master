@@ -17,9 +17,13 @@
     </table>
 </asp:Content>
 <asp:Content ContentPlaceHolderID="menuTitle" runat="server">
+    <asp:ContentPlaceHolder ID="menuTitle" runat="server">
 
+    </asp:ContentPlaceHolder>
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="menuContent" runat="server">
+    <asp:ContentPlaceHolder ID="menuContent" runat="server">
 
+    </asp:ContentPlaceHolder>
 </asp:Content>

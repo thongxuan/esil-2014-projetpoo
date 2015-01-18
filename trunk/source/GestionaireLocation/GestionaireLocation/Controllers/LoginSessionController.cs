@@ -40,7 +40,13 @@ namespace GestionaireLocation.Controllers
                 if (Membership.ValidateUser(login, motdepasse))
                 {
                     FormsAuthentication.RedirectFromLoginPage(login, false);
-                    return RedirectToAction("locataire_index", "GestionaireLocation", null);
+                    GesLocEntities db = new GesLocEntities();
+                    Utilisateur u = db.Utilisateurs.FirstOrDefault(x => x.login.Equals(login));
+                    if (u.Bailleur!=null)
+                        return RedirectToAction("bailleur_index", "GestionaireLocation",null);
+                    else
+                        return RedirectToAction("locataire_index", "GestionaireLocation", null);
+
                 }
                 else
                 {
