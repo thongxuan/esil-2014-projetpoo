@@ -40,7 +40,7 @@ namespace GestionaireLocation.Controllers
                 if (Membership.ValidateUser(login, motdepasse))
                 {
                     FormsAuthentication.RedirectFromLoginPage(login, false);
-                    return RedirectToAction("index_locataire", "GestionaireLocation", null);
+                    return RedirectToAction("locataire_index", "GestionaireLocation", null);
                 }
                 else
                 {

@@ -8,10 +8,21 @@
     <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>
 </head>
 <body>
-    <div>
-        <asp:ContentPlaceHolder ID="MainContent" runat="server">
-        
-        </asp:ContentPlaceHolder>
+    <div style="padding-top:50px; padding-left:100px; padding-right:100px">
+       
+             <!-- entete de page -->
+            <div style="text-align:center">
+                <img src='<%: Url.Content("~/Content/Image/entete.png") %>' style="width: 100%; margin-left: 0px"/>
+            </div>
+            
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+
+             </asp:ContentPlaceHolder>                                
+
+            <!-- pied de page -->
+            <div style="text-align:center">
+                <img src='<%: Url.Content("~/Content/Image/footer.png") %>' style="width: 100%; margin-left: 0px;margin-top:15px"/>
+           </div>
     </div>
 </body>
 </html>

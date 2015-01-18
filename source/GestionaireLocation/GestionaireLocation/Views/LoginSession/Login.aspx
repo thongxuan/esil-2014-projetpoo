@@ -5,8 +5,8 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <div style="text-align:center; font-size:72px; color:skyblue; padding-top:120px; padding-bottom:30px">        
-        Gestionaire de Location
+    <div style="text-align:center; font-size:72px; color:skyblue; padding-top:50px; padding-bottom:30px">        
+        Page d'authentification
     </div>    
     <% using(Html.BeginForm("login","LoginSession",FormMethod.Post)) { %>
         <div>
@@ -58,5 +58,8 @@
             </table>
         </div>
     <% } %>
-
+    <br />
+    <br />
+    <br />
+    <br />
 </asp:Content>

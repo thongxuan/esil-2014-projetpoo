@@ -1,36 +1,24 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Locataire.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
 
-<script runat="server">
-
-    protected void Page_Load(object sender, EventArgs e)
-    {
-
-    }
-</script>
-
-
-<asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    recherche
-</asp:Content>
-
-<asp:Content ID="Content3" ContentPlaceHolderID="titreMenu" runat="server">
-    <p class="auto-style7">
-        <span class="auto-style6" style="font-size: x-large"><strong>Trouver en quelques clics votre appartement!!!</strong></span>
+<asp:Content ID="Content1" ContentPlaceHolderID="menuTitle" runat="server">
+    <p style="text-align:center">
+        <span style="font-size: x-large">
+            <strong>
+                Trouver en quelques clics votre appartement!!!
+            </strong>
+        </span>
     </p>
 </asp:Content>
 
-<asp:Content ID="Content2" ContentPlaceHolderID="Bailleur" runat="server">
-
-
-
-    <% using(Html.BeginForm("locataire_recherche","GestionaireLocation",FormMethod.Post)) { %>
-    <table style="width:100%">
+<asp:Content ID="Content3" ContentPlaceHolderID="menuContent" runat="server">
+    <% using(Html.BeginForm("locataire_recherche_action", "GestionaireLocation", FormMethod.Post)) { %>
+    <table style="width:100%" cellpadding="5">
         <tr>
-            <td>
+            <td style="width: 239px">
                 Ville
             </td>
-            <td>
-                <select name="ville" size="1">
+            <td style="width: 295px">
+                <select name="liVille" size="1" style="width:100%">
                     <option>Marseille</option>
                     <option>Toulouse</option>
                     <option>Paris</option>
@@ -43,14 +31,15 @@
             </td>
         </tr>
         <tr>
-            <td>
-                Prix
+            <td style="width: 239px">
+                <input id="chbPrix" name="chbPrix" type="checkbox"/>
+                <label for="chbPrix">Prix (euros)</label>
             </td>
-            <td>
-                <input type="text" name="txtPrix" style="width:100%" />
+            <td style="width: 295px">
+                <input type="number" name="txtPrix" style="width:100%" />
             </td>
             <td style="text-align:right">
-                <input type="radio" id="rdPrix1" name="rdPrix" value="1" />
+                <input type="radio" id="rdPrix1" name="rdPrix" value="1" checked="checked" />
                 <label for="rdPrix1">1</label>
                 <input type="radio" id="rdPrix2" name="rdPrix" value="2" />
                 <label for="rdPrix2">2</label>
@@ -63,14 +52,15 @@
             </td>
         </tr>
         <tr>
-            <td>
-                Supercifie
+            <td style="width: 239px">
+                <input id="chbSup" name="chbSup" type="checkbox"/>
+                <label for="chbSup">Superficie (metres carrés)</label>
             </td>
-            <td>
-                <input type="text" name="txtSupercifie" style="width:100%" />
+            <td style="width: 295px">
+                <input type="number" name="txtSup" style="width:100%" />
             </td>
             <td style="text-align:right">
-                <input type="radio" id="rdSup1" name="rdSup" value="1" />
+                <input type="radio" id="rdSup1" name="rdSup" value="1" checked="checked"/>
                 <label for="rdSup1">1</label>
                 <input type="radio" id="rdSup2" name="rdSup" value="2" />
                 <label for="rdSup2">2</label>
@@ -83,11 +73,12 @@
             </td>
         </tr>
         <tr>
-            <td>
-                Type de bâtiment
+            <td style="width: 239px">
+                <input id="chbType" name="chbType" type="checkbox"/>
+                <label for="chbType">Type de bâtiment</label>
             </td>
-            <td>
-                <select name="liVille" size="1">
+            <td style="width: 295px">
+                <select name="liType" size="1" style="width:100%">
                     <option>T1</option>
                     <option>T2</option>
                     <option>T3</option>
@@ -95,30 +86,31 @@
                 </select>
             </td>
             <td style="text-align:right">
-                <input type="radio" id="rdVille1" name="rdVille" value="1" />
+                <input type="radio" id="rdVille1" name="rdType" value="1" checked="checked"/>
                 <label for="rdVille1">1</label>
-                <input type="radio" id="rdVille2" name="rdVille" value="2" />
+                <input type="radio" id="rdVille2" name="rdType" value="2" />
                 <label for="rdVille2">2</label>
-                <input type="radio" id="rdVille3" name="rdVille" value="3" />
+                <input type="radio" id="rdVille3" name="rdType" value="3" />
                 <label for="rdVille3">3</label>
-                <input type="radio" id="rdVille4" name="rdVille" value="4" />
+                <input type="radio" id="rdVille4" name="rdType" value="4" />
                 <label for="rdVille4">4</label>
-                <input type="radio" id="rdVille5" name="rdVille" value="5" />
+                <input type="radio" id="rdVille5" name="rdType" value="5" />
                 <label for="rdVille5">5</label>
             </td>
         </tr>
         <tr>
-            <td>
-                Mode de location
+            <td style="width: 239px">
+                <input id="chbMode" name="chbMode" type="checkbox"/>
+                <label for="chbMode">Mode de location</label>
             </td>
-            <td>
-                <select name="liMode" size="1">
+            <td style="width: 295px">
+                <select name="liMode" size="1" style="width:100%">
                     <option>Tout seul</option>
                     <option>Colocation</option>
                 </select>
             </td>
             <td style="text-align:right">
-                <input type="radio" id="rdMode1" name="rdMode" value="1" />
+                <input type="radio" id="rdMode1" name="rdMode" value="1" checked="checked"/>
                 <label for="rdMode1">1</label>
                 <input type="radio" id="rdMode2" name="rdMode" value="2" />
                 <label for="rdMode2">2</label>
@@ -135,11 +127,7 @@
                 <input type="submit" value="Rechercher"/>
                 <input type="reset" value="Annuler"/>
             </td>
-        </tr>
-           
-        </table>
+        </tr>           
+    </table>
     <% } %>
-
-
-
 </asp:Content>
