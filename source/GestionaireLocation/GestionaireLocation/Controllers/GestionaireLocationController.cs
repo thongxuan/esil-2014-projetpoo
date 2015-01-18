@@ -41,7 +41,7 @@ namespace GestionaireLocation.Controllers
             List<Annonce> annonces = db.Annonces.Where(x => x.Appartement.Lieu.Equals(ville) && x.Visibilite==1).ToList();
 
             //choisir les criteres        
-            List<ComparatorCritere> listCriteres = new List<ComparatorCritere>();  
+            List<ComparatorCritere> listCriteres = new List<ComparatorCritere>();
             if ("on".Equals(fc["chbPrix"]))
             {
                 //obtenir priorite
@@ -94,6 +94,7 @@ namespace GestionaireLocation.Controllers
         }                
 
         //controllers for bailleurs
+        [Authorize(Roles=CustomRoleProvider.BAILLEUR)]
         public ActionResult bailleur_index()
         {
             return View("bailleur_accueil");

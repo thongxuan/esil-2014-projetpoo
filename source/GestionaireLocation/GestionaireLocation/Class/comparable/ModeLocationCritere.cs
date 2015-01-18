@@ -28,7 +28,6 @@ namespace GestionaireLocation.Class.comparable
                     return 2;
                 default:
                     return 0;
-
             }
         }
     }

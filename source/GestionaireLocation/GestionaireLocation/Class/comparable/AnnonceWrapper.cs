@@ -19,18 +19,18 @@ namespace GestionaireLocation.Class
 
         int IComparable<AnnonceWrapper>.CompareTo(AnnonceWrapper other)
         {
-            double result = (getVariant(annonce) - getVariant(other.annonce))*1000;
+            double result = (getVariance(annonce) - getVariance(other.annonce))*1000;
             return (int)result;
         }
 
-        private double getVariant(Annonce annonce)
+        private double getVariance(Annonce annonce)
         {
-            double variant = 0;            
+            double variance = 0;            
             foreach (ComparatorCritere c in criteres)
             {
-                variant += (6 - c.Priorite) * Math.Pow((Math.Abs(c.getValue(annonce) - c.getDefaultValue()) / c.getDefaultValue()), 2);                
+                variance += (6 - c.Priorite) * Math.Pow((Math.Abs(c.getValue(annonce) - c.getDefaultValue()) / c.getDefaultValue()), 2);             
             }
-            return variant;
+            return variance;
         }
     }
 }
