@@ -80,8 +80,6 @@ namespace GestionaireLocation.Controllers
                 u.nom = nom;
                 u.motdepasse = motdepasse;
                 u.login = login;
-                u.type = "1";
-                u.seed = 11;
 
                 u.Bailleur = new Bailleur();
                 u.Bailleur.Telephone = telephone;
@@ -128,16 +126,14 @@ namespace GestionaireLocation.Controllers
                 u.nom = nom;
                 u.motdepasse = motdepasse;
                 u.login = login;
-                u.type = "1";
-                u.seed = 11;
 
                 u.Locataire = new Locataire();
                 u.Locataire.Telephone = telephone;
                 u.Locataire.InfoSupp = infoSup;
                 u.Locataire.Addresse = adresse;
                 u.Locataire.Civilite = civilite;
-                u.Locataire.DateNaiss = dateNaiss;
-                u.Locataire.Fumeur = fumeur;
+                //u.Locataire.DateNaiss = dateNaiss;
+                //u.Locataire.Fumeur = fumeur;
                 db.Utilisateurs.Add(u);
                 db.SaveChanges();
 
@@ -165,6 +161,7 @@ namespace GestionaireLocation.Controllers
 
         public ActionResult inscription_locataire()
         {
+            return View("ins_locataire");
         }
 
         public ActionResult access_denied()
