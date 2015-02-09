@@ -7,19 +7,16 @@ namespace GestionaireLocation.Class.comparable
 {
     public class BatimentTypeCritere : ComparatorCritere
     {
-        public BatimentTypeCritere(int priorite, Object defaultValue): base(priorite, defaultValue)
+        public BatimentTypeCritere(int priorite, Object defaultValue)
+            : base(priorite, defaultValue)
         {
-
+            modeEvaluation = ModeEvaluation.NEUTRAL;
         }
 
-        public override double getValue(Models.Annonce obj)
+        public override double getVariance(Models.Annonce obj)
         {
-            return getValue(obj.Appartement.Type);
-        }
-
-        public override double getDefaultValue()
-        {
-            return getValue((string)DefaultValue);
+            double defaultvalue=getValue((String)DefaultValue);
+            return Math.Pow((Math.Abs(getValue(obj.Appartement.Type) - defaultvalue) / defaultvalue), 2);       
         }
 
         private double getValue(String batimentType)

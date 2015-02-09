@@ -31,5 +31,6 @@ namespace GestionaireLocation.Models
         public DbSet<Demande> Demandes { get; set; }
         public DbSet<Locataire> Locataires { get; set; }
         public DbSet<Utilisateur> Utilisateurs { get; set; }
+        public DbSet<Ville> Villes { get; set; }
     }
 }

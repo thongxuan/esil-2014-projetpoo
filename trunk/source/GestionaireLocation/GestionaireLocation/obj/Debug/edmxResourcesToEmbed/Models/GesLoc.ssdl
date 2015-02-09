@@ -21,9 +21,9 @@
     <Property Name="Superficie" Type="float" Nullable="false" />
     <Property Name="NbPieces" Type="int" Nullable="false" />
     <Property Name="Parking" Type="int" Nullable="false" />
-    <Property Name="NbEtage" Type="int" Nullable="false" />
+    <Property Name="NbEtage" Type="int" />
     <Property Name="Type" Type="nvarchar" MaxLength="10" Nullable="false" />
-    <Property Name="Lieu" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IDVille" Type="int" Nullable="false" />
     <Property Name="InfoSupp" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="Bailleur">
@@ -56,7 +56,7 @@
     <Property Name="Civilite" Type="nvarchar" MaxLength="10" Nullable="false" />
     <Property Name="DateNaiss" Type="date" />
     <Property Name="Profession" Type="nvarchar" MaxLength="50" />
-    <Property Name="EtatCivil" Type="nchar" MaxLength="10" />
+    <Property Name="EtatCivil" Type="nvarchar" MaxLength="20" />
     <Property Name="Fumeur" Type="int" />
     <Property Name="InfoSupp" Type="nvarchar(max)" />
   </EntityType>
@@ -68,8 +68,15 @@
     <Property Name="nom" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="login" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="motdepasse" Type="nvarchar" MaxLength="256" Nullable="false" />
-    <Property Name="seed" Type="int" Nullable="false" />
-    <Property Name="type" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ville">
+    <Key>
+      <PropertyRef Name="IDVille" />
+    </Key>
+    <Property Name="IDVille" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NomVille" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="XPos" Type="int" Nullable="false" />
+    <Property Name="YPos" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="FK_Annonce_Appartement">
     <End Role="Appartement" Type="Self.Appartement" Multiplicity="1" />
@@ -92,6 +99,18 @@
       </Principal>
       <Dependent Role="Annonce">
         <PropertyRef Name="IDBailleur" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Appartement_Ville">
+    <End Role="Ville" Type="Self.Ville" Multiplicity="1" />
+    <End Role="Appartement" Type="Self.Appartement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ville">
+        <PropertyRef Name="IDVille" />
+      </Principal>
+      <Dependent Role="Appartement">
+        <PropertyRef Name="IDVille" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -150,6 +169,7 @@
     <EntitySet Name="Demande" EntityType="Self.Demande" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Locataire" EntityType="Self.Locataire" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Utilisateur" EntityType="Self.Utilisateur" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ville" EntityType="Self.Ville" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Annonce_Appartement" Association="Self.FK_Annonce_Appartement">
       <End Role="Appartement" EntitySet="Appartement" />
       <End Role="Annonce" EntitySet="Annonce" />
@@ -157,6 +177,10 @@
     <AssociationSet Name="FK_Annonce_Bailleur" Association="Self.FK_Annonce_Bailleur">
       <End Role="Bailleur" EntitySet="Bailleur" />
       <End Role="Annonce" EntitySet="Annonce" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Appartement_Ville" Association="Self.FK_Appartement_Ville">
+      <End Role="Ville" EntitySet="Ville" />
+      <End Role="Appartement" EntitySet="Appartement" />
     </AssociationSet>
     <AssociationSet Name="FK_Bailleur_tbUtilisateur" Association="Self.FK_Bailleur_tbUtilisateur">
       <End Role="Utilisateur" EntitySet="Utilisateur" />

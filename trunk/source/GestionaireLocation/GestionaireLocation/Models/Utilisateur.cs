@@ -18,8 +18,6 @@ namespace GestionaireLocation.Models
         public string nom { get; set; }
         public string login { get; set; }
         public string motdepasse { get; set; }
-        public int seed { get; set; }
-        public string type { get; set; }
     
         public virtual Bailleur Bailleur { get; set; }
         public virtual Locataire Locataire { get; set; }

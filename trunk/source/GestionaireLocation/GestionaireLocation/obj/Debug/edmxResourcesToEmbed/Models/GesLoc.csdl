@@ -1,5 +1,42 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="GesLocModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="GesLocEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Annonces" EntityType="GesLocModel.Annonce" />
+    <EntitySet Name="Appartements" EntityType="GesLocModel.Appartement" />
+    <EntitySet Name="Bailleurs" EntityType="GesLocModel.Bailleur" />
+    <EntitySet Name="Demandes" EntityType="GesLocModel.Demande" />
+    <EntitySet Name="Locataires" EntityType="GesLocModel.Locataire" />
+    <EntitySet Name="Utilisateurs" EntityType="GesLocModel.Utilisateur" />
+    <AssociationSet Name="FK_Annonce_Appartement" Association="GesLocModel.FK_Annonce_Appartement">
+      <End Role="Appartement" EntitySet="Appartements" />
+      <End Role="Annonce" EntitySet="Annonces" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Annonce_Bailleur" Association="GesLocModel.FK_Annonce_Bailleur">
+      <End Role="Bailleur" EntitySet="Bailleurs" />
+      <End Role="Annonce" EntitySet="Annonces" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Demande_Annonce" Association="GesLocModel.FK_Demande_Annonce">
+      <End Role="Annonce" EntitySet="Annonces" />
+      <End Role="Demande" EntitySet="Demandes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Bailleur_tbUtilisateur" Association="GesLocModel.FK_Bailleur_tbUtilisateur">
+      <End Role="Utilisateur" EntitySet="Utilisateurs" />
+      <End Role="Bailleur" EntitySet="Bailleurs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Demande_Locataire" Association="GesLocModel.FK_Demande_Locataire">
+      <End Role="Locataire" EntitySet="Locataires" />
+      <End Role="Demande" EntitySet="Demandes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Locataire_tbUtilisateur" Association="GesLocModel.FK_Locataire_tbUtilisateur">
+      <End Role="Utilisateur" EntitySet="Utilisateurs" />
+      <End Role="Locataire" EntitySet="Locataires" />
+    </AssociationSet>
+    <EntitySet Name="Villes" EntityType="GesLocModel.Ville" />
+    <AssociationSet Name="FK_Appartement_Ville" Association="GesLocModel.FK_Appartement_Ville">
+      <End Role="Ville" EntitySet="Villes" />
+      <End Role="Appartement" EntitySet="Appartements" />
+    </AssociationSet>
+  </EntityContainer>
   <EntityType Name="Annonce">
     <Key>
       <PropertyRef Name="IDAnnonce" />
@@ -9,12 +46,12 @@
     <Property Name="IDAppartement" Type="Int32" Nullable="false" />
     <Property Name="DatePub" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="Prix" Type="Double" Nullable="false" />
-    <Property Name="Motif" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Motif" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
     <Property Name="NbMaxCol" Type="Int32" Nullable="false" />
     <Property Name="Visibilite" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Appartement" Relationship="Self.FK_Annonce_Appartement" FromRole="Annonce" ToRole="Appartement" />
-    <NavigationProperty Name="Bailleur" Relationship="Self.FK_Annonce_Bailleur" FromRole="Annonce" ToRole="Bailleur" />
-    <NavigationProperty Name="Demandes" Relationship="Self.FK_Demande_Annonce" FromRole="Annonce" ToRole="Demande" />
+    <NavigationProperty Name="Appartement" Relationship="GesLocModel.FK_Annonce_Appartement" FromRole="Annonce" ToRole="Appartement" />
+    <NavigationProperty Name="Bailleur" Relationship="GesLocModel.FK_Annonce_Bailleur" FromRole="Annonce" ToRole="Bailleur" />
+    <NavigationProperty Name="Demandes" Relationship="GesLocModel.FK_Demande_Annonce" FromRole="Annonce" ToRole="Demande" />
   </EntityType>
   <EntityType Name="Appartement">
     <Key>
@@ -24,11 +61,12 @@
     <Property Name="Superficie" Type="Double" Nullable="false" />
     <Property Name="NbPieces" Type="Int32" Nullable="false" />
     <Property Name="Parking" Type="Int32" Nullable="false" />
-    <Property Name="NbEtage" Type="Int32" Nullable="false" />
-    <Property Name="Type" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Lieu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NbEtage" Type="Int32" />
+    <Property Name="Type" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="IDVille" Type="Int32" Nullable="false" />
     <Property Name="InfoSupp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Annonces" Relationship="Self.FK_Annonce_Appartement" FromRole="Appartement" ToRole="Annonce" />
+    <NavigationProperty Name="Annonces" Relationship="GesLocModel.FK_Annonce_Appartement" FromRole="Appartement" ToRole="Annonce" />
+    <NavigationProperty Name="Ville" Relationship="GesLocModel.FK_Appartement_Ville" FromRole="Appartement" ToRole="Ville" />
   </EntityType>
   <EntityType Name="Bailleur">
     <Key>
@@ -38,8 +76,8 @@
     <Property Name="Telephone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
     <Property Name="Adresse" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
     <Property Name="InfoSupp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Annonces" Relationship="Self.FK_Annonce_Bailleur" FromRole="Bailleur" ToRole="Annonce" />
-    <NavigationProperty Name="Utilisateur" Relationship="Self.FK_Bailleur_tbUtilisateur" FromRole="Bailleur" ToRole="Utilisateur" />
+    <NavigationProperty Name="Annonces" Relationship="GesLocModel.FK_Annonce_Bailleur" FromRole="Bailleur" ToRole="Annonce" />
+    <NavigationProperty Name="Utilisateur" Relationship="GesLocModel.FK_Bailleur_tbUtilisateur" FromRole="Bailleur" ToRole="Utilisateur" />
   </EntityType>
   <EntityType Name="Demande">
     <Key>
@@ -51,8 +89,8 @@
     <Property Name="DateDemande" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="Status" Type="Int32" Nullable="false" />
     <Property Name="Commentaire" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Annonce" Relationship="Self.FK_Demande_Annonce" FromRole="Demande" ToRole="Annonce" />
-    <NavigationProperty Name="Locataire" Relationship="Self.FK_Demande_Locataire" FromRole="Demande" ToRole="Locataire" />
+    <NavigationProperty Name="Annonce" Relationship="GesLocModel.FK_Demande_Annonce" FromRole="Demande" ToRole="Annonce" />
+    <NavigationProperty Name="Locataire" Relationship="GesLocModel.FK_Demande_Locataire" FromRole="Demande" ToRole="Locataire" />
   </EntityType>
   <EntityType Name="Locataire">
     <Key>
@@ -61,31 +99,29 @@
     <Property Name="IDLocataire" Type="Int32" Nullable="false" />
     <Property Name="Telephone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
     <Property Name="Addresse" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-    <Property Name="Civilite" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Civilite" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
     <Property Name="DateNaiss" Type="DateTime" Precision="0" />
     <Property Name="Profession" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="EtatCivil" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="EtatCivil" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
     <Property Name="Fumeur" Type="Int32" />
     <Property Name="InfoSupp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Demandes" Relationship="Self.FK_Demande_Locataire" FromRole="Locataire" ToRole="Demande" />
-    <NavigationProperty Name="Utilisateur" Relationship="Self.FK_Locataire_tbUtilisateur" FromRole="Locataire" ToRole="Utilisateur" />
+    <NavigationProperty Name="Demandes" Relationship="GesLocModel.FK_Demande_Locataire" FromRole="Locataire" ToRole="Demande" />
+    <NavigationProperty Name="Utilisateur" Relationship="GesLocModel.FK_Locataire_tbUtilisateur" FromRole="Locataire" ToRole="Utilisateur" />
   </EntityType>
   <EntityType Name="Utilisateur">
     <Key>
       <PropertyRef Name="IDUser" />
     </Key>
     <Property Name="IDUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="motdepasse" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="seed" Type="Int32" Nullable="false" />
-    <Property Name="type" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Bailleur" Relationship="Self.FK_Bailleur_tbUtilisateur" FromRole="Utilisateur" ToRole="Bailleur" />
-    <NavigationProperty Name="Locataire" Relationship="Self.FK_Locataire_tbUtilisateur" FromRole="Utilisateur" ToRole="Locataire" />
+    <Property Name="nom" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="motdepasse" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Bailleur" Relationship="GesLocModel.FK_Bailleur_tbUtilisateur" FromRole="Utilisateur" ToRole="Bailleur" />
+    <NavigationProperty Name="Locataire" Relationship="GesLocModel.FK_Locataire_tbUtilisateur" FromRole="Utilisateur" ToRole="Locataire" />
   </EntityType>
   <Association Name="FK_Annonce_Appartement">
-    <End Role="Appartement" Type="Self.Appartement" Multiplicity="1" />
-    <End Role="Annonce" Type="Self.Annonce" Multiplicity="*" />
+    <End Type="GesLocModel.Appartement" Role="Appartement" Multiplicity="1" />
+    <End Type="GesLocModel.Annonce" Role="Annonce" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Appartement">
         <PropertyRef Name="IDAppartement" />
@@ -96,8 +132,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Annonce_Bailleur">
-    <End Role="Bailleur" Type="Self.Bailleur" Multiplicity="1" />
-    <End Role="Annonce" Type="Self.Annonce" Multiplicity="*" />
+    <End Type="GesLocModel.Bailleur" Role="Bailleur" Multiplicity="1" />
+    <End Type="GesLocModel.Annonce" Role="Annonce" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Bailleur">
         <PropertyRef Name="IDBailleur" />
@@ -108,8 +144,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Demande_Annonce">
-    <End Role="Annonce" Type="Self.Annonce" Multiplicity="1" />
-    <End Role="Demande" Type="Self.Demande" Multiplicity="*" />
+    <End Type="GesLocModel.Annonce" Role="Annonce" Multiplicity="1" />
+    <End Type="GesLocModel.Demande" Role="Demande" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Annonce">
         <PropertyRef Name="IDAnnonce" />
@@ -120,8 +156,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Bailleur_tbUtilisateur">
-    <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="1" />
-    <End Role="Bailleur" Type="Self.Bailleur" Multiplicity="0..1" />
+    <End Type="GesLocModel.Utilisateur" Role="Utilisateur" Multiplicity="1" />
+    <End Type="GesLocModel.Bailleur" Role="Bailleur" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="Utilisateur">
         <PropertyRef Name="IDUser" />
@@ -132,8 +168,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Demande_Locataire">
-    <End Role="Locataire" Type="Self.Locataire" Multiplicity="1" />
-    <End Role="Demande" Type="Self.Demande" Multiplicity="*" />
+    <End Type="GesLocModel.Locataire" Role="Locataire" Multiplicity="1" />
+    <End Type="GesLocModel.Demande" Role="Demande" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Locataire">
         <PropertyRef Name="IDLocataire" />
@@ -144,8 +180,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Locataire_tbUtilisateur">
-    <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="1" />
-    <End Role="Locataire" Type="Self.Locataire" Multiplicity="0..1" />
+    <End Type="GesLocModel.Utilisateur" Role="Utilisateur" Multiplicity="1" />
+    <End Type="GesLocModel.Locataire" Role="Locataire" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="Utilisateur">
         <PropertyRef Name="IDUser" />
@@ -155,36 +191,26 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="GesLocEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Annonces" EntityType="Self.Annonce" />
-    <EntitySet Name="Appartements" EntityType="Self.Appartement" />
-    <EntitySet Name="Bailleurs" EntityType="Self.Bailleur" />
-    <EntitySet Name="Demandes" EntityType="Self.Demande" />
-    <EntitySet Name="Locataires" EntityType="Self.Locataire" />
-    <EntitySet Name="Utilisateurs" EntityType="Self.Utilisateur" />
-    <AssociationSet Name="FK_Annonce_Appartement" Association="Self.FK_Annonce_Appartement">
-      <End Role="Appartement" EntitySet="Appartements" />
-      <End Role="Annonce" EntitySet="Annonces" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Annonce_Bailleur" Association="Self.FK_Annonce_Bailleur">
-      <End Role="Bailleur" EntitySet="Bailleurs" />
-      <End Role="Annonce" EntitySet="Annonces" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Demande_Annonce" Association="Self.FK_Demande_Annonce">
-      <End Role="Annonce" EntitySet="Annonces" />
-      <End Role="Demande" EntitySet="Demandes" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Bailleur_tbUtilisateur" Association="Self.FK_Bailleur_tbUtilisateur">
-      <End Role="Utilisateur" EntitySet="Utilisateurs" />
-      <End Role="Bailleur" EntitySet="Bailleurs" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Demande_Locataire" Association="Self.FK_Demande_Locataire">
-      <End Role="Locataire" EntitySet="Locataires" />
-      <End Role="Demande" EntitySet="Demandes" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Locataire_tbUtilisateur" Association="Self.FK_Locataire_tbUtilisateur">
-      <End Role="Utilisateur" EntitySet="Utilisateurs" />
-      <End Role="Locataire" EntitySet="Locataires" />
-    </AssociationSet>
-  </EntityContainer>
+  <EntityType Name="Ville">
+    <Key>
+      <PropertyRef Name="IDVille" />
+    </Key>
+    <Property Name="IDVille" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NomVille" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="XPos" Type="Int32" Nullable="false" />
+    <Property Name="YPos" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Appartements" Relationship="GesLocModel.FK_Appartement_Ville" FromRole="Ville" ToRole="Appartement" />
+  </EntityType>
+  <Association Name="FK_Appartement_Ville">
+    <End Type="GesLocModel.Ville" Role="Ville" Multiplicity="1" />
+    <End Type="GesLocModel.Appartement" Role="Appartement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ville">
+        <PropertyRef Name="IDVille" />
+      </Principal>
+      <Dependent Role="Appartement">
+        <PropertyRef Name="IDVille" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

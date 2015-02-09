@@ -14,7 +14,7 @@
     <% GestionaireLocation.Models.Utilisateur user = (HttpContext.Current.User.Identity as GestionaireLocation.Class.CustomIdentity).MembershipUser.User;%>
     <table style="margin:auto; width:100%;" border="1" cellpadding="5">
         <tr>
-            <td rowspan="8">
+            <td rowspan="8" style="width: 206px; vertical-align:middle; text-align:center">
                 <img src="" width="200px" height="200px"/>
             </td>
             <td>

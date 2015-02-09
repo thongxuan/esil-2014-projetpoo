@@ -5,18 +5,20 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="b7b5229a893c4afa9967a05e5e14d741" Name="Diagram1">
-        <EntityTypeShape EntityType="GesLocModel.Annonce" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="GesLocModel.Appartement" Width="1.5" PointX="3" PointY="9.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="GesLocModel.Bailleur" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="GesLocModel.Demande" Width="1.5" PointX="7.5" PointY="3.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="GesLocModel.Locataire" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="GesLocModel.Utilisateur" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
-        <AssociationConnector Association="GesLocModel.FK_Annonce_Appartement" ManuallyRouted="false" />
-        <AssociationConnector Association="GesLocModel.FK_Annonce_Bailleur" ManuallyRouted="false" />
-        <AssociationConnector Association="GesLocModel.FK_Demande_Annonce" ManuallyRouted="false" />
-        <AssociationConnector Association="GesLocModel.FK_Bailleur_tbUtilisateur" ManuallyRouted="false" />
-        <AssociationConnector Association="GesLocModel.FK_Demande_Locataire" ManuallyRouted="false" />
-        <AssociationConnector Association="GesLocModel.FK_Locataire_tbUtilisateur" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="GesLocModel.Annonce" Width="1.5" PointX="5.25" PointY="1.125" />
+        <EntityTypeShape EntityType="GesLocModel.Appartement" Width="1.5" PointX="3" PointY="9.25" />
+        <EntityTypeShape EntityType="GesLocModel.Bailleur" Width="1.5" PointX="3" PointY="1.625" />
+        <EntityTypeShape EntityType="GesLocModel.Demande" Width="1.5" PointX="7.5" PointY="3.25" />
+        <EntityTypeShape EntityType="GesLocModel.Locataire" Width="1.5" PointX="3" PointY="4.625" />
+        <EntityTypeShape EntityType="GesLocModel.Utilisateur" Width="1.5" PointX="0.75" PointY="3.625" />
+        <AssociationConnector Association="GesLocModel.FK_Annonce_Appartement" />
+        <AssociationConnector Association="GesLocModel.FK_Annonce_Bailleur" />
+        <AssociationConnector Association="GesLocModel.FK_Demande_Annonce" />
+        <AssociationConnector Association="GesLocModel.FK_Bailleur_tbUtilisateur" />
+        <AssociationConnector Association="GesLocModel.FK_Demande_Locataire" />
+        <AssociationConnector Association="GesLocModel.FK_Locataire_tbUtilisateur" />
+        <EntityTypeShape EntityType="GesLocModel.Ville" Width="1.5" PointX="0.75" PointY="9.75" />
+        <AssociationConnector Association="GesLocModel.FK_Appartement_Ville" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

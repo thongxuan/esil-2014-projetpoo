@@ -10,19 +10,20 @@ namespace GestionaireLocation.Class
 {
     public class CustomMembershipUser : MembershipUser
     {
-        public Utilisateur User { get; set; }
-        public String UserName { get; set; }
+        public int UserID { get; set; }
+        public Utilisateur User { get; set; }        
         public String RoleName { get; set; }
+        public String UserName { get; set; }
         
         public CustomMembershipUser(Utilisateur user) : base()
         {
             User = user;
+            UserID = user.IDUser;
             UserName = user.nom;
             if (user.Locataire != null)
                 RoleName = CustomRoleProvider.LOCATAIRE;
             else if (user.Bailleur != null)
                 RoleName = CustomRoleProvider.BAILLEUR;
         }
-
     }
 }

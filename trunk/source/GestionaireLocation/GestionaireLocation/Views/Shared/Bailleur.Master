@@ -3,15 +3,15 @@
 <asp:Content ContentPlaceHolderID="menuButton" runat="server">
     <table>
         <tr>
-            <td><a href='<%: Url.Action("gotopage_locataire_recherche", "GestionaireLocation") %>'>
+            <td><a href='<%: Url.Action("bailleur_publier", "GestionaireLocation") %>'>
                 <img src='<%: Url.Content("~/Content/Image/bouton_publier.png") %>' width="250px"/> </a></td>
         </tr>
         <tr>
-            <td><a href='<%: Url.Action("gotopage_locataire_demande", "GestionaireLocation") %>'>
+            <td><a href='<%: Url.Action("bailleur_appartement", "GestionaireLocation") %>'>
                 <img src='<%: Url.Content("~/Content/Image/bouton_appartement.png") %>' width="250px"/> </a></td>
         </tr>
         <tr>
-            <td><a href='<%: Url.Action("gotopage_locataireinfo", "GestionaireLocation") %>'>
+            <td><a href='<%: Url.Action("bailleur_annonce", "GestionaireLocation") %>'>
                 <img src='<%: Url.Content("~/Content/Image/bouton_annonce.png") %>' width="250px"/> </a></td>
         </tr>        
     </table>
