@@ -165,7 +165,6 @@ namespace GestionaireLocation.Controllers
 
         public ActionResult inscription_locataire()
         {
-            return View("~/Views/GestionaireLocation/locataire_recherche.aspx");
         }
 
         public ActionResult access_denied()

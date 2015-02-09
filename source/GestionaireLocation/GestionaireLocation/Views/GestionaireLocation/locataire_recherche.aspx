@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Locataire.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="menuTitle" runat="server">
+    <b>Recherche</b>
     <p style="text-align:center">
         <span style="font-size: x-large">
             <strong>
@@ -15,19 +16,33 @@
     <table style="width:100%" cellpadding="5">
         <tr>
             <td style="width: 239px">
-                Ville
+                <input id="chbVille" name="chbVille" type="checkbox"/>
+                <label for="chbVille">Ville</label>
             </td>
             <td style="width: 295px">
                 <select name="liVille" size="1" style="width:100%">
-                    <option>Marseille</option>
-                    <option>Toulouse</option>
-                    <option>Paris</option>
-                    <option>Lyon</option>
-                    <option>Nice</option>
+                <% 
+                List<GestionaireLocation.Models.Ville> liVille = (List<GestionaireLocation.Models.Ville>)ViewData["villes"];
+                for (int i=0;i<liVille.Count;i++)
+                {
+                    %>
+                    <option value="<%= liVille[i].IDVille%>"><%= liVille[i].NomVille %></option>
+                    <%            
+                }                             
+                %>
                 </select>
-            </td>
-            <td style="text-align:right">
-                Priorité
+            </td>            
+                <td style="text-align:right">
+                <input type="radio" id="rdVille1" name="rdVille" value="1" checked="checked" />
+                <label for="rdVille1">1</label>
+                <input type="radio" id="rdVille2" name="rdVille" value="2" />
+                <label for="rdVille2">2</label>
+                <input type="radio" id="rdVille3" name="rdVille" value="3" />
+                <label for="rdVille3">3</label>
+                <input type="radio" id="rdVille4" name="rdVille" value="4" />
+                <label for="rdVille4">4</label>
+                <input type="radio" id="rdVille5" name="rdVille" value="5" />
+                <label for="rdVille5">5</label>            
             </td>
         </tr>
         <tr>
@@ -86,16 +101,16 @@
                 </select>
             </td>
             <td style="text-align:right">
-                <input type="radio" id="rdVille1" name="rdType" value="1" checked="checked"/>
-                <label for="rdVille1">1</label>
-                <input type="radio" id="rdVille2" name="rdType" value="2" />
-                <label for="rdVille2">2</label>
-                <input type="radio" id="rdVille3" name="rdType" value="3" />
-                <label for="rdVille3">3</label>
-                <input type="radio" id="rdVille4" name="rdType" value="4" />
-                <label for="rdVille4">4</label>
-                <input type="radio" id="rdVille5" name="rdType" value="5" />
-                <label for="rdVille5">5</label>
+                <input type="radio" id="rdType1" name="rdType" value="1" checked="checked"/>
+                <label for="rdType1">1</label>
+                <input type="radio" id="rdType2" name="rdType" value="2" />
+                <label for="rdType2">2</label>
+                <input type="radio" id="rdType3" name="rdType" value="3" />
+                <label for="rdType3">3</label>
+                <input type="radio" id="rdType4" name="rdType" value="4" />
+                <label for="rdType4">4</label>
+                <input type="radio" id="rdType5" name="rdType" value="5" />
+                <label for="rdType5">5</label>
             </td>
         </tr>
         <tr>

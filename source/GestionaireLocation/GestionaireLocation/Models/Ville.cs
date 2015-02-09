@@ -12,23 +12,18 @@ namespace GestionaireLocation.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Appartement
+    public partial class Ville
     {
-        public Appartement()
+        public Ville()
         {
-            this.Annonces = new HashSet<Annonce>();
+            this.Appartements = new HashSet<Appartement>();
         }
     
-        public int IDAppartement { get; set; }
-        public double Superficie { get; set; }
-        public int NbPieces { get; set; }
-        public int Parking { get; set; }
-        public Nullable<int> NbEtage { get; set; }
-        public string Type { get; set; }
         public int IDVille { get; set; }
-        public string InfoSupp { get; set; }
+        public string NomVille { get; set; }
+        public int XPos { get; set; }
+        public int YPos { get; set; }
     
-        public virtual ICollection<Annonce> Annonces { get; set; }
-        public virtual Ville Ville { get; set; }
+        public virtual ICollection<Appartement> Appartements { get; set; }
     }
 }

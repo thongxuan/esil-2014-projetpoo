@@ -64,3 +64,5 @@ E:\HOC KI 7 FRANCE\MCO\esil-2014-projetpoo\source\GestionaireLocation\Gestionair
 E:\HOC KI 7 FRANCE\MCO\esil-2014-projetpoo\source\GestionaireLocation\GestionaireLocation\obj\Debug\GestionaireLocation.csprojResolveAssemblyReference.cache
 E:\HOC KI 7 FRANCE\MCO\esil-2014-projetpoo\source\GestionaireLocation\GestionaireLocation\obj\Debug\GestionaireLocation.dll
 E:\HOC KI 7 FRANCE\MCO\esil-2014-projetpoo\source\GestionaireLocation\GestionaireLocation\obj\Debug\GestionaireLocation.pdb
+E:\HOC KI 7 FRANCE\MCO\esil-2014-projetpoo\source\GestionaireLocation\GestionaireLocation\bin\fr\System.Net.Http.resources.dll
+E:\HOC KI 7 FRANCE\MCO\esil-2014-projetpoo\source\GestionaireLocation\GestionaireLocation\bin\fr\System.Net.Http.WebRequest.resources.dll

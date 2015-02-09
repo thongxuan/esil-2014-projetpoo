@@ -10,7 +10,7 @@ namespace GestionaireLocation.Class
     [Serializable]
     public class CustomIdentity : IIdentity
     {
-
+        public int UserID { get; set; }
         public String UserName { get; set; }
         public String RoleName { get; set; }
         public IIdentity Identity { get; set; }
@@ -38,10 +38,10 @@ namespace GestionaireLocation.Class
             MembershipUser = (CustomMembershipUser)Membership.GetUser(Identity.Name);
             if (MembershipUser!=null)
             {
+                UserID = MembershipUser.UserID;
                 UserName = MembershipUser.UserName;
                 RoleName = MembershipUser.RoleName;
             }
         }
-
     }
 }

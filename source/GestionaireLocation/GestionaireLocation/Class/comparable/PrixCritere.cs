@@ -8,18 +8,18 @@ namespace GestionaireLocation.Class.comparable
 {
     public class PrixCritere : ComparatorCritere
     {
-        public PrixCritere(int priorite, Object defaultValue) : base(priorite,defaultValue)
+        public PrixCritere(int priorite, Object defaultValue)
+            : base(priorite, defaultValue)
         {
-
-        }
-        public override double getValue(Annonce obj)
-        {
-            return obj.Prix;
+            modeEvaluation = ModeEvaluation.SMALLER_IS_BETTER;
         }
 
-        public override double getDefaultValue()
+        public override double getVariance(Annonce obj)
         {
-            return (double)DefaultValue;
+            if (((double)DefaultValue) == 0)
+                return MAX_VALUE;
+            else
+                return obj.Prix/((double)DefaultValue);
         }
     }
 }

@@ -7,19 +7,15 @@ namespace GestionaireLocation.Class.comparable
 {
     public class SuperficieCritere : ComparatorCritere
     {
-        public SuperficieCritere(int priorite, Object defaultValue) : base(priorite,defaultValue)
+        public SuperficieCritere(int priorite, Object defaultValue)
+            : base(priorite, defaultValue)
         {
-
+            modeEvaluation = ModeEvaluation.BIGGER_IS_BETTER;
         }
 
-        public override double getValue(Models.Annonce obj)
+        public override double getVariance(Models.Annonce obj)
         {
-            return obj.Appartement.Superficie;
-        }
-
-        public override double getDefaultValue()
-        {
-            return (double)DefaultValue;
+            return ((double)DefaultValue)/obj.Appartement.Superficie;
         }
     }
 }

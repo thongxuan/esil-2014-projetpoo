@@ -7,17 +7,25 @@ using System.Web;
 namespace GestionaireLocation.Class
 {
     public abstract class ComparatorCritere
-    {        
+    {
+        public const double MAX_VALUE = 10;
+        public enum ModeEvaluation
+        {
+            BIGGER_IS_BETTER,
+            SMALLER_IS_BETTER,
+            NEUTRAL,
+        }
+
+        public ModeEvaluation modeEvaluation;
         public int Priorite { get; private set; }
         protected Object DefaultValue;
 
         public ComparatorCritere(int priorite, Object defaultValue)
         {                        
             this.Priorite = priorite;
-            this.DefaultValue = defaultValue;
+            this.DefaultValue = defaultValue;            
         }
 
-        public abstract double getValue(Annonce obj);
-        public abstract double getDefaultValue();
+        public abstract double getVariance(Annonce annonce);
     }
 }
