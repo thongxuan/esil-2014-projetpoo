@@ -13,41 +13,48 @@
             </td>
         </tr>
     </table>
-    <%if(ViewData["error"]!=null){ 
-        if(ViewData["error"].Equals("erreur")){
-               %>
+    <%
+        if(ViewData["error"]!=null)
+        { 
+            if(ViewData["error"].Equals("erreur"))
+            {
+            %>
                 <p style="font-style: italic; text-align: center">Login déja utilisé!</p>
-        <% } %>
-        <%else if(ViewData["error"].Equals("erreurmdp")){
-               %>
-            <p style="text-align: center; font-style: italic">Les mots de passes saisis ne correspondent pas!</p>
-        <% } %>
-    <% } %>
+            <% 
+            } 
+            else if(ViewData["error"].Equals("erreurmdp"))
+            {
+            %>
+                <p style="text-align: center; font-style: italic">Les mots de passes saisis ne correspondent pas!</p>
+            <%  
+            }
+        } 
+    %>
     <table align="center" style="width: 480px" >
 
         <tr>
             <td>Nom et prenom(s):</td>
-            <td><input type="text" name="nomBail" style="width: 250px"/></td>
+            <td><asp:TextBox ID="nomBail" runat="server" Width="246px"></asp:TextBox></td>
         </tr>
          <tr>
             <td>Login:</td>
-            <td><input type="text" name="loginBail" style="width: 250px"/></td>
+            <td><asp:TextBox ID="loginBail" runat="server" Width="246px"></asp:TextBox></td>
         </tr>
          <tr>
             <td>Mot de passe:</td>
-            <td><input type="text" name="mdpBail" style="width: 250px"/></td>
+            <td><asp:TextBox ID="mdpBail" runat="server" Width="246px"></asp:TextBox></td>
         </tr>
         <tr>
             <td style="height: 28px">Confirmer mot de passe:</td>
-            <td style="height: 28px"><input type="text" name="cnfirmMdpBail" style="width: 250px"/></td>
+            <td style="height: 28px"><asp:TextBox ID="cnfirmMdpBail" runat="server" Width="246px"></asp:TextBox></td>
         </tr>
          <tr>
             <td>Téléphone:</td>
-            <td><input type="text" name="telBail" style="width: 250px"/></td>
+            <td><asp:TextBox ID="telBail" runat="server" Width="246px"></asp:TextBox></td>
         </tr>
          <tr>
             <td>Adresse:</td>
-            <td><input type="text" name="adresseBail" style="width: 250px"/></td>
+            <td><asp:TextBox ID="adresseBail" runat="server" Width="246px"></asp:TextBox></td>
         </tr>
          <tr>
             <td>Infos Supplementaires:</td>
